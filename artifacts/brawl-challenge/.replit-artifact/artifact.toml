@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Brawl Challenge"
+version = "1.0.0"
+id = "artifacts/brawl-challenge"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26003
+
+[services.development]
+run = "pnpm --filter @workspace/brawl-challenge run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/brawl-challenge", "run", "build" ]
+publicDir = "artifacts/brawl-challenge/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26003"
+BASE_PATH = "/"

@@ -1,0 +1,135 @@
+Here's your text reorganized into clear sections, with minimal changes to the actual wording:
+Brawl Challenge – Website Brief
+Initial Setup
+
+"Create a front-end website project with three files: index.html, style.css, and script.js. The HTML should include a basic layout with a header, main content area, and footer. The CSS should style the page with a modern look. The JavaScript should include a simple interactive feature like a button that shows an alert when clicked. Do not use Node.js or TypeScript. This is a static website meant to run in the browser."
+General Design & Theme
+
+    The website is called Brawl Challenge
+    The theme of the website is neon blue — the same colour as the logo (attached in files)
+    I'll attach images of my first try so you can copy them colour-wise, UI and that
+    Dark mode is the default. The profile bar has a dark/light mode toggle — make sure light mode works properly and no text is invisible (because it's the same colour as the background)
+    The website should be highly optimised on mobile (vertical) — make sure that looks good
+    Remove the corny subheadings for the different features. Only keep the timers for the different features. Change the profile text that says "Combat Record" to just "Profile"
+
+Layout — Side Panel
+
+All of the following are present on the side panel:
+
+    Daily Challenge
+    Speed Challenge
+    Trophy Challenge
+    Quiz Mode
+    History
+    Profile
+    About
+
+Below the navigation links, include promotions:
+
+    A link to the YouTube channel @ELLOit2 (profile picture/tag will be provided)
+    A link to the Discord server: discord.gg/ErQfemV6ps
+
+Global UI Elements
+
+    Display the user's streak in the top right corner at all times
+    Whenever a user levels up (with default XP), show confetti coming in from the sides and a popup saying "Level up" — not anything about quiz mode levelling up
+    Whenever a user unlocks a new title, a popup should appear giving them the option to click OK or Equip
+    Whenever a user reaches a new quiz level, show a popup telling them they've reached a new level and that the challenges will be harder from now on
+
+1. Daily Challenge
+
+    The user gets one daily challenge (challenges will be provided in a separate document)
+    Challenges have difficulties: Easy, Medium, Hard — more points are awarded based on difficulty (you can make up the individual difficulties, it doesn't matter much)
+    The user gets 3 rerolls that reset every 7 days
+    When a daily challenge is completed:
+        Recommend watching some amazing Brawlstars content (link to the ELLOit2 YouTube channel — make the button actually clickable)
+        Recommend the Speed Challenge with a button that actually navigates to the Speed Challenge
+
+2. Speed Challenge (mark as NEW)
+
+    Basically the same as the daily challenge but timed (speed challenges will be provided in a separate document)
+    Add a short description under the title in small text: "The speed challenge is only unlocked when activated. After activation you only have 5 minutes to complete the challenge."
+    When activated, the challenge is revealed and a 5-minute countdown timer starts
+    The user must complete the challenge and click Done within 5 minutes, or they get no points and must try again in 24 hours
+    When a speed challenge is completed:
+        Recommend watching some amazing Brawlstars content (link to the ELLOit2 YouTube channel)
+        Recommend the Daily Challenge with a clickable button that navigates to it
+
+3. Trophy Challenge
+
+    Not limited by 24 hours — the user can do as many as they want
+    At the start of the page it says: "Start a Trophy Challenge"
+    One of the 101 brawlers is selected randomly, along with a random trophy amount between 5 and 40 trophies — e.g. "Shelly – 54 trophies"
+    The user has 2 buttons:
+        Completed — gives the user a small amount of XP (must be small as anyone can complete infinite amounts)
+        Reroll — also unlimited. Under it says: "(I don't have the brawler)" — clicking it rerolls the trophy challenge
+    A stat in the profile will display how many trophies the user has earned from the trophy challenge
+
+4. Quiz Mode
+
+    Quiz questions will be provided in a separate document
+    The user earns small amounts of points from this mode
+    Questions get harder the more the user gets right (quiz levels)
+    The user can only complete 10 questions per day
+    When the user reaches a new quiz level, show a popup telling them they've reached a new level and that challenges will be harder from now on
+    The user only levels up in quiz levels when they reach a certain number of correct questions — this is separate from the main XP level up
+
+5. History
+
+Two sections:
+
+    Daily Challenges Completed — display points earned and the date completed
+    Speed Challenges Completed — display points earned, date completed, and how long it took to complete
+
+6. Profile
+
+    The user can change their name
+    Includes a dark mode / light mode toggle (dark mode is default)
+    The following stats are displayed:
+        Streak (days in a row completing a daily or speed challenge)
+        Total XP earned
+        Challenges completed
+        Quiz accuracy
+        Level
+        Trophies earned from trophy challenges
+        Time spent on speed challenges
+        Titles unlocked
+
+Titles
+
+Display all titles in the profile, darkened and locked, so users can see what to work toward (like the image). Whenever a new title is unlocked, show a popup with the option to click OK or Equip.
+Title	Unlock Condition
+No Title	Free
+Challenger	Complete 5 daily challenges
+Quiz Master	Reach Quiz Level 3
+Challenge Master	Reach a 30-day daily streak (1 month)
+Quiz God	Reach the final quiz level
+Challenge God	Complete 50 daily challenges
+
+The YouTube channel and Discord server links are also displayed at the bottom of the profile.
+7. About
+
+Three sections:
+
+    About Us — displayed directly on the page
+    Privacy Policy — button redirecting to: Google Doc
+    Terms of Service (TOS) — button redirecting to: Google Doc
+
+"Come Back Tomorrow" Screen
+
+When a user has completed the daily challenge, speed challenge, or 10 daily quizzes, display:
+
+    A message to come back tomorrow, with a timer showing when the challenge/quiz resets
+    Recommendations for the other 2 modes they haven't completed (e.g. if they've done the speed challenge, recommend the daily challenge and quiz mode)
+    A recommendation to watch some amazing Brawlstars content, with a link to the ELLOit2 YouTube channel
+
+Footer
+
+Tiny clickable text links at the bottom of the website, each taking the user to a new screen:
+
+    Privacy Policy Summary — display the full summary on-page, with a link to the full Google Doc version at the bottom
+    TOS Summary — same format as above
+    FAQ
+    More About Brawl Challenge
+
+(Content for all four will be provided in attachments)

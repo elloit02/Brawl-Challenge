@@ -1,0 +1,30 @@
+FAQ:
+
+What is Brawl Challenge? 
+Brawl Challenge is a websites that helps you on your brawlstars journey and keeps you from getting bored with extra challenges, quizzes and other fun features.
+
+How do you level up in Brawl Challenge
+You level up by completing Daily challenges, speed challenges and the quiz mode. This earns you xp which will make you level up when you earn enough. TIP: Apply the titles you have unlocked for more points!
+
+How are challenges selected?
+Challenges are picked from a predetermined pool. That same goes for the quiz mode, although there the pools are different based on your level in the website.
+
+Do I need an account to use Brawl Challenge?
+Currently no account is needed, but we may add log in options for user later as things like leaderboards may require authorization 
+
+Is my history and data about the website saved?
+Yes, to keep your progress from resetting and allow you to continue where you left of, data about you will be saved in your browser info(like cookies). Note that deleting your browser cookies will delete the data too, and your progress won’t be saved across devices.
+
+How do I contact support?
+You can contact us via elloit.02@gmail.com. Expect a reply within a few business days.
+Is this website safe for kids? 
+Brawl Challenge does not include any content unsafe for children. We would not recommend it for under 13 year olds.
+
+How do we handle privacy and data? 
+We do not sell your data. We may use some data for analytics such as device type and country but not more. Most data is stored on your own device and the site doent require any personal data like your name or age.
+
+What about Ads and monetisation?
+We do not include subscriptions or any micro transactions which means we have to use ads to fund the site. Ads include Google Adsense ads but also ads for the creator such as invite links to discord servers and links to youtube channels. 
+
+How can I find out more about the creator and the site?
+You can join the community Discord server, check out the youtube channel linked across the site or message me personally from the contact email provided.

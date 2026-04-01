@@ -1,0 +1,45 @@
+Privacy policy: (summary) Copy this exact text in: 
+Brawl Challenge – Privacy Policy Summary
+Last updated: 16 March 2026
+Brawl Challenge is an unofficial, fan-made quiz and challenge platform inspired by Brawl Stars. We are not affiliated with, endorsed by, or sponsored by Supercell. This summary explains how we handle your personal data when you use our site.
+
+What We Collect
+We collect two broad categories of information:
+Information you provide directly — when you create an account, we collect your email address and the display name you choose. If you sign in via Google, we receive your Google account email and display name from Google's systems.
+Information collected automatically — we collect device and usage data such as your browser type, operating system, IP address, pages visited, and session activity. This helps us keep the site secure and running smoothly. Cookies and similar tracking technologies are also used by us and our advertising partner, Google AdSense.
+We do not collect sensitive data such as payment details, government IDs, health information, or precise location data.
+
+How We Use Your Information
+Your information is used to:
+Run your account — managing your login, display name, XP, streaks, and daily challenges.
+Improve the site — analysing usage patterns to fix issues and enhance the experience.
+Serve advertising — Google AdSense uses cookies to display personalised or non-personalised ads depending on your consent preferences.
+Keep the site secure — detecting and preventing unauthorised access, fraud, or abuse.
+Comply with the law — meeting our obligations under applicable privacy regulations.
+Communicate with you — responding to support requests and sending important account updates.
+We do not sell your personal information to third parties, and we do not use your data for automated decision-making beyond standard advertising and analytics.
+
+Cookies and Advertising
+We use several types of cookies: essential cookies (required for the site to work), preference cookies (to remember your settings), analytics cookies (to understand how the site is used), and advertising cookies (used by Google AdSense to serve ads).
+Google AdSense may serve personalised ads based on your browsing history, or non-personalised ads based on the page content you're viewing. For users in the EU, UK, and Switzerland, we use a Google-certified Consent Management Platform (CMP) that complies with the IAB Transparency and Consent Framework. When you first visit the site, you'll see a consent banner letting you accept, reject, or customise your cookie preferences. You can update these choices at any time via the "Cookie Settings" link in the site footer.
+To opt out of personalised advertising, you can visit Google Ads Settings or aboutads.info. You can also manage or block cookies through your browser settings, though doing so may affect some site functionality.
+
+Data Storage and Security
+Your data is stored and processed through our hosting provider, Replit, which may handle data in the United States or other locations. We use HTTPS encryption for all data in transit and apply strict access controls so only authorised personnel can access your information. We also follow regular security review practices and collect only the minimum data necessary for the site to function.
+No method of data storage or transmission is completely secure. If you suspect your account has been compromised, please contact us immediately.
+
+Data Retention and Deletion
+We keep your data only for as long as necessary. Your account information is retained until you delete your account or request deletion. Log data is kept for a limited period for security and troubleshooting purposes.
+To request deletion of your account and data, contact us at elloit.02@gmail.com. We will process your request promptly, in line with any legal obligations.
+
+Children's Privacy
+Brawl Challenge is not directed at children under 13. We do not knowingly collect personal information from anyone under 13. If you believe a child has provided us with their data, please contact us and we will delete it immediately.
+
+Your Rights
+Depending on where you live, you may have the right to access, correct, delete, or export your personal data, restrict or object to how it's processed, and withdraw your consent to data collection at any time. To exercise any of these rights, contact us at elloit.02@gmail.com. EU/EEA, UK, and Swiss users may also contact their local data protection authority — such as the Finnish Data Protection Ombudsman — if they feel their rights have been violated.
+
+Changes to This Policy
+We may update this policy from time to time. When we make significant changes, we'll update the date at the top of the page and may notify you via the site or email. We recommend reviewing the policy periodically.
+
+Questions? Contact us at elloit.02@gmail.com
+Brawl Challenge is not affiliated with, endorsed by, or sponsored by Supercell. All Brawl Stars trademarks belong to Supercell.
