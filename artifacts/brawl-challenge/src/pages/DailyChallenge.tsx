@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useUser } from "@/contexts/UserContext";
 import ComeBackTomorrow from "@/components/ComeBackTomorrow";
 import { RotateCcw, CheckCircle, Flame, Clock, Youtube, Zap } from "lucide-react";
-import { getNextMidnight, formatCountdown } from "@/lib/storage";
+import { getNextMidnight, formatCountdown, applyTitleMultiplier, getXPMultiplier, ALL_TITLES } from "@/lib/storage";
 
 interface Props {
   onNavigate: (page: string) => void;
@@ -44,6 +44,9 @@ export default function DailyChallenge({ onNavigate }: Props) {
   }, [isDailyCompleted]);
 
   const challenge = getCurrentDailyChallenge();
+  const multiplier = getXPMultiplier(user.activeTitle);
+  const effectiveXP = applyTitleMultiplier(challenge.xp, user.activeTitle);
+  const hasMultiplier = multiplier > 1;
 
   const diffClass = {
     Easy: "diff-easy",
@@ -130,9 +133,19 @@ export default function DailyChallenge({ onNavigate }: Props) {
           <span className={`text-xs font-bold px-3 py-1 rounded-full ${diffClass}`}>
             {challenge.difficulty.toUpperCase()}
           </span>
-          <div className="flex items-center gap-1.5 text-primary">
-            <span className="font-bold text-lg">+{challenge.xp}</span>
-            <span className="text-sm font-semibold">XP</span>
+          <div className="flex items-center gap-2">
+            {hasMultiplier && (
+              <span className="text-xs text-muted-foreground line-through">+{challenge.xp}</span>
+            )}
+            <div className="flex items-center gap-1 text-primary">
+              <span className="font-bold text-lg">+{effectiveXP}</span>
+              <span className="text-sm font-semibold">XP</span>
+              {hasMultiplier && (
+                <span className="text-xs font-black bg-primary/20 text-primary px-1.5 py-0.5 rounded-full ml-1">
+                  {multiplier}x
+                </span>
+              )}
+            </div>
           </div>
         </div>
 

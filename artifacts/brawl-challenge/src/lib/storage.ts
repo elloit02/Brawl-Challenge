@@ -175,13 +175,22 @@ export function updateStreak(data: UserData): UserData {
 // ─── Titles ───────────────────────────────────────────────────────────────────
 
 export const ALL_TITLES = [
-  { id: "No Title", label: "No Title", desc: "Free — no unlock needed" },
-  { id: "Challenger", label: "Challenger", desc: "Complete 5 daily challenges" },
-  { id: "Quiz Master", label: "Quiz Master", desc: "Reach Quiz Level 3" },
-  { id: "Challenge Master", label: "Challenge Master", desc: "Reach a 30-day daily streak" },
-  { id: "Quiz God", label: "Quiz God", desc: "Reach the final quiz level" },
-  { id: "Challenge God", label: "Challenge God", desc: "Complete 50 daily challenges" },
+  { id: "No Title",        label: "No Title",        desc: "Free — no unlock needed",           multiplier: 1,   multiplierLabel: "1x XP" },
+  { id: "Challenger",      label: "Challenger",      desc: "Complete 5 daily challenges",       multiplier: 1.5, multiplierLabel: "1.5x XP" },
+  { id: "Quiz Master",     label: "Quiz Master",     desc: "Reach Quiz Tier 3",                 multiplier: 2,   multiplierLabel: "2x XP" },
+  { id: "Challenge Master",label: "Challenge Master",desc: "Reach a 30-day daily streak",       multiplier: 2.5, multiplierLabel: "2.5x XP" },
+  { id: "Quiz God",        label: "Quiz God",        desc: "Reach the final quiz tier",         multiplier: 3,   multiplierLabel: "3x XP" },
+  { id: "Challenge God",   label: "Challenge God",   desc: "Complete 50 daily challenges",      multiplier: 5,   multiplierLabel: "5x XP" },
 ];
+
+export function getXPMultiplier(activeTitle: string): number {
+  const title = ALL_TITLES.find(t => t.id === activeTitle);
+  return title?.multiplier ?? 1;
+}
+
+export function applyTitleMultiplier(baseXP: number, activeTitle: string): number {
+  return Math.round(baseXP * getXPMultiplier(activeTitle));
+}
 
 export function checkTitleUnlocks(data: UserData): { data: UserData; newTitles: string[] } {
   const newTitles: string[] = [];

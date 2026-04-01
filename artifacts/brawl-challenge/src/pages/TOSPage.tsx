@@ -64,7 +64,7 @@ export default function TOSPage({ onBack }: Props) {
 
       <div className="mt-4 flex justify-center">
         <a
-          href="https://docs.google.com/document/d/1TOSDoc"
+          href="https://docs.google.com/document/d/1-h-Qw0Uhig5O2LLHBdMf2mucMF0Op7HKN21S62bvlUc/edit?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-primary text-sm hover:underline"

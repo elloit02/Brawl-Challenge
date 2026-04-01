@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useUser } from "@/contexts/UserContext";
-import { ALL_TITLES, formatSeconds } from "@/lib/storage";
+import { ALL_TITLES, formatSeconds, getXPMultiplier } from "@/lib/storage";
 import { QUIZ_LEVEL_NAMES, QUIZ_LEVEL_THRESHOLDS } from "@/lib/quiz";
 import {
   Edit2, Check, Sun, Moon, Trophy, Flame, Brain, Zap,
@@ -108,17 +108,20 @@ export default function Profile() {
                     key={t.id}
                     onClick={() => unlocked && handleEquipTitle(t.id)}
                     disabled={!unlocked}
-                    className={`text-xs px-2.5 py-1 rounded-full font-semibold transition-all ${
+                    className={`flex items-center gap-1 text-xs px-2.5 py-1 rounded-full font-semibold transition-all ${
                       active
                         ? "title-badge-active ring-1 ring-primary/50"
                         : unlocked
                         ? "bg-muted text-muted-foreground hover:bg-muted/60"
                         : "title-badge-locked cursor-not-allowed"
                     }`}
-                    title={unlocked ? t.desc : `🔒 ${t.desc}`}
+                    title={unlocked ? `${t.desc} · ${t.multiplierLabel}` : `🔒 ${t.desc} · ${t.multiplierLabel}`}
                   >
-                    {!unlocked && <span className="mr-1">🔒</span>}
+                    {!unlocked && <span>🔒</span>}
                     {t.label}
+                    <span className={`text-[10px] font-black ${active ? "text-primary-foreground/80" : unlocked ? "text-primary" : "opacity-50"}`}>
+                      {t.multiplierLabel}
+                    </span>
                   </button>
                 );
               })}

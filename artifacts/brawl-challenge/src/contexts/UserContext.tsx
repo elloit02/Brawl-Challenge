@@ -11,6 +11,7 @@ import {
   xpRequiredForLevel,
   getTodayDate,
   isToday,
+  applyTitleMultiplier,
 } from "@/lib/storage";
 import { DAILY_CHALLENGES, SPEED_CHALLENGES, Challenge } from "@/lib/challenges";
 import Confetti from "@/components/Confetti";
@@ -173,14 +174,16 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
       updated = updateStreak(updated);
 
-      const { data: afterXP, leveledUp, newLevel } = addXP(updated, challenge?.xp || 50);
+      const baseXP = challenge?.xp || 50;
+      const finalXP = applyTitleMultiplier(baseXP, prev.activeTitle);
+      const { data: afterXP, leveledUp, newLevel } = addXP(updated, finalXP);
       const { data: afterTitles, newTitles } = checkTitleUnlocks(afterXP);
       saveUserData(afterTitles);
 
       if (leveledUp) {
         setShowConfetti(true);
         setLevelUpPopup({ show: true, level: newLevel });
-        setTimeout(() => setShowConfetti(false), 4000);
+        setTimeout(() => setShowConfetti(false), 5500);
       }
       if (newTitles.length > 0) {
         setTitlePopups(p => [...p, ...newTitles]);
@@ -240,14 +243,16 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
       updated = updateStreak(updated);
 
-      const { data: afterXP, leveledUp, newLevel } = addXP(updated, challenge?.xp || 50);
+      const baseXPSpeed = challenge?.xp || 50;
+      const finalXPSpeed = applyTitleMultiplier(baseXPSpeed, prev.activeTitle);
+      const { data: afterXP, leveledUp, newLevel } = addXP(updated, finalXPSpeed);
       const { data: afterTitles, newTitles } = checkTitleUnlocks(afterXP);
       saveUserData(afterTitles);
 
       if (leveledUp) {
         setShowConfetti(true);
         setLevelUpPopup({ show: true, level: newLevel });
-        setTimeout(() => setShowConfetti(false), 4000);
+        setTimeout(() => setShowConfetti(false), 5500);
       }
       if (newTitles.length > 0) {
         setTitlePopups(p => [...p, ...newTitles]);
@@ -285,7 +290,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
       if (correct) {
         updated.quizCorrect = (prev.quizCorrect || 0) + 1;
-        xpGained = 10; // small XP per correct answer
+        xpGained = applyTitleMultiplier(10, prev.activeTitle);
       }
 
       const { data: afterQuizLevel, leveledUp, newLevel } = checkQuizLevelUp(updated);
@@ -302,7 +307,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       if (xpLeveledUp) {
         setShowConfetti(true);
         setLevelUpPopup({ show: true, level: xpLevel });
-        setTimeout(() => setShowConfetti(false), 4000);
+        setTimeout(() => setShowConfetti(false), 5500);
       }
       if (newTitles.length > 0) {
         setTitlePopups(p => [...p, ...newTitles]);

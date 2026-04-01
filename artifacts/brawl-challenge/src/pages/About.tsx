@@ -31,7 +31,7 @@ export default function About() {
       {/* Legal buttons */}
       <div className="grid grid-cols-2 gap-3">
         <a
-          href="https://docs.google.com/document/d/1PrivacyPolicyDoc"
+          href="https://docs.google.com/document/d/11s_oinlZhXjTQFS5BcTZI4NkOnNrcTaSBuyVxB5Ew1M/edit?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-between bg-card border border-border rounded-xl p-4 hover:border-primary/30 transition-colors group"
@@ -44,7 +44,7 @@ export default function About() {
         </a>
 
         <a
-          href="https://docs.google.com/document/d/1TOSDoc"
+          href="https://docs.google.com/document/d/1-h-Qw0Uhig5O2LLHBdMf2mucMF0Op7HKN21S62bvlUc/edit?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-between bg-card border border-border rounded-xl p-4 hover:border-primary/30 transition-colors group"

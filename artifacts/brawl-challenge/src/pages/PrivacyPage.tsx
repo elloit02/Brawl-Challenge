@@ -58,7 +58,7 @@ export default function PrivacyPage({ onBack }: Props) {
 
       <div className="mt-4 flex justify-center">
         <a
-          href="https://docs.google.com/document/d/1PrivacyPolicyDoc"
+          href="https://docs.google.com/document/d/11s_oinlZhXjTQFS5BcTZI4NkOnNrcTaSBuyVxB5Ew1M/edit?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-primary text-sm hover:underline"
