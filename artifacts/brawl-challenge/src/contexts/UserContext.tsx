@@ -13,7 +13,7 @@ import {
   isToday,
   applyTitleMultiplier,
 } from "@/lib/storage";
-import { DAILY_CHALLENGES, SPEED_CHALLENGES, Challenge } from "@/lib/challenges";
+import { DAILY_CHALLENGES, SPEED_CHALLENGES, Challenge, getRandomTrophyChallenge } from "@/lib/challenges";
 import Confetti from "@/components/Confetti";
 import LevelUpPopup from "@/components/popups/LevelUpPopup";
 import TitleUnlockPopup from "@/components/popups/TitleUnlockPopup";
@@ -34,6 +34,8 @@ interface UserContextType {
   isQuizDailyDone: () => boolean;
   submitQuizAnswer: (correct: boolean) => { xpGained: number; quizLeveledUp: boolean; newQuizLevel: number };
   completeTrophyChallenge: (brawler: string, trophies: number) => void;
+  rerollTrophyChallenge: () => void;
+  getCurrentTrophyChallenge: () => { brawler: string; trophies: number };
   darkMode: boolean;
   toggleDarkMode: () => void;
   xpForCurrentLevel: number;
@@ -319,12 +321,44 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     return { xpGained, quizLeveledUp, newQuizLevel };
   }, [user.quizLevel]);
 
-  const completeTrophyChallenge = useCallback((brawler: string, trophies: number) => {
+  const getCurrentTrophyChallenge = useCallback((): { brawler: string; trophies: number } => {
+    if (user.currentTrophyBrawler && user.currentTrophyTrophies !== null) {
+      return { brawler: user.currentTrophyBrawler, trophies: user.currentTrophyTrophies };
+    }
+    return getRandomTrophyChallenge();
+  }, [user.currentTrophyBrawler, user.currentTrophyTrophies]);
+
+  // Initialize trophy challenge on first load if not set
+  useEffect(() => {
+    if (!user.currentTrophyBrawler || user.currentTrophyTrophies === null) {
+      const challenge = getRandomTrophyChallenge();
+      setUser(prev => {
+        const updated = { ...prev, currentTrophyBrawler: challenge.brawler, currentTrophyTrophies: challenge.trophies };
+        saveUserData(updated);
+        return updated;
+      });
+    }
+  }, []);
+
+  const rerollTrophyChallenge = useCallback(() => {
+    const challenge = getRandomTrophyChallenge();
     setUser(prev => {
-      const xpGained = 5; // small XP, unlimited mode
+      const updated = { ...prev, currentTrophyBrawler: challenge.brawler, currentTrophyTrophies: challenge.trophies };
+      saveUserData(updated);
+      return updated;
+    });
+  }, []);
+
+  const completeTrophyChallenge = useCallback((brawler: string, trophies: number) => {
+    const nextChallenge = getRandomTrophyChallenge();
+    setUser(prev => {
+      const xpGained = applyTitleMultiplier(5, prev.activeTitle);
       const updated = {
         ...prev,
         trophiesEarned: (prev.trophiesEarned || 0) + trophies,
+        // Immediately assign new challenge so it's ready on next render
+        currentTrophyBrawler: nextChallenge.brawler,
+        currentTrophyTrophies: nextChallenge.trophies,
       };
       const { data: afterXP } = addXP(updated, xpGained);
       const { data: afterTitles } = checkTitleUnlocks(afterXP);
@@ -377,6 +411,8 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       isQuizDailyDone,
       submitQuizAnswer,
       completeTrophyChallenge,
+      rerollTrophyChallenge,
+      getCurrentTrophyChallenge,
       darkMode: user.darkMode,
       toggleDarkMode,
       xpForCurrentLevel: user.xp,

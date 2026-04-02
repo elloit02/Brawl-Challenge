@@ -1,26 +1,27 @@
 import { useState } from "react";
 import { useUser } from "@/contexts/UserContext";
-import { getRandomTrophyChallenge } from "@/lib/challenges";
 import { Trophy, RefreshCw, CheckCircle } from "lucide-react";
 
 export default function TrophyChallenge() {
-  const { user, completeTrophyChallenge } = useUser();
-  const [current, setCurrent] = useState(() => getRandomTrophyChallenge());
+  const { user, completeTrophyChallenge, rerollTrophyChallenge, getCurrentTrophyChallenge } = useUser();
   const [lastCompleted, setLastCompleted] = useState<{ brawler: string; trophies: number } | null>(null);
   const [flash, setFlash] = useState<"success" | null>(null);
 
+  // Read from persisted storage — never re-randomizes on navigation
+  const current = getCurrentTrophyChallenge();
+
   function handleComplete() {
-    completeTrophyChallenge(current.brawler, current.trophies);
-    setLastCompleted(current);
+    const snapshot = { brawler: current.brawler, trophies: current.trophies };
+    completeTrophyChallenge(snapshot.brawler, snapshot.trophies);
+    setLastCompleted(snapshot);
     setFlash("success");
     setTimeout(() => {
       setFlash(null);
-      setCurrent(getRandomTrophyChallenge());
-    }, 1500);
+    }, 1800);
   }
 
   function handleReroll() {
-    setCurrent(getRandomTrophyChallenge());
+    rerollTrophyChallenge();
   }
 
   return (
@@ -43,11 +44,7 @@ export default function TrophyChallenge() {
         </div>
       </div>
 
-      {/* Challenge */}
-      <div className="text-center mb-6">
-        <h2 className="text-lg font-bold text-muted-foreground mb-4">Start a Trophy Challenge</h2>
-      </div>
-
+      {/* Challenge Card */}
       <div className={`bg-card border rounded-2xl p-8 mb-6 text-center transition-all duration-300 relative overflow-hidden
         ${flash === "success" ? "border-green-500/50 bg-green-500/5" : "border-border card-hover neon-border"}
       `}>
@@ -58,6 +55,7 @@ export default function TrophyChallenge() {
             <CheckCircle size={48} className="text-green-500 mx-auto mb-3" />
             <p className="text-xl font-bold text-green-400">+{lastCompleted?.trophies} Trophies Earned!</p>
             <p className="text-muted-foreground text-sm">with {lastCompleted?.brawler}</p>
+            <p className="text-muted-foreground text-xs mt-2">Loading next challenge…</p>
           </div>
         ) : (
           <>

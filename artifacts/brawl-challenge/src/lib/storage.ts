@@ -53,6 +53,9 @@ export interface UserData {
   darkMode: boolean;
   usedDailyIndices: number[];
   usedSpeedIndices: number[];
+  // Trophy challenge — persisted so navigation never resets it
+  currentTrophyBrawler: string | null;
+  currentTrophyTrophies: number | null;
 }
 
 // ─── Defaults ────────────────────────────────────────────────────────────────
@@ -89,6 +92,8 @@ export function getDefaultUserData(): UserData {
     darkMode: true,
     usedDailyIndices: [],
     usedSpeedIndices: [],
+    currentTrophyBrawler: null,
+    currentTrophyTrophies: null,
   };
 }
 
@@ -117,7 +122,8 @@ export function saveUserData(data: UserData): void {
 // ─── XP & Level ──────────────────────────────────────────────────────────────
 
 export function xpRequiredForLevel(level: number): number {
-  return level * 150;
+  // Starts at 50 XP for level 1, grows by 15% each level
+  return Math.round(50 * Math.pow(1.15, level - 1));
 }
 
 export function addXP(data: UserData, amount: number): { data: UserData; leveledUp: boolean; newLevel: number } {
