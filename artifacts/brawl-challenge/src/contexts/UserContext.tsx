@@ -88,7 +88,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
       if (leveledUp) {
         setShowConfetti(true);
         setLevelUpPopup({ show: true, level: newLevel });
-        setTimeout(() => setShowConfetti(false), 4000);
+        setTimeout(() => setShowConfetti(false), 5000);
       }
       if (newTitles.length > 0) {
         setTitlePopups(prev => [...prev, ...newTitles]);

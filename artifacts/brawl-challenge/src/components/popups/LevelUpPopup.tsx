@@ -9,102 +9,95 @@ export default function LevelUpPopup({ level, onClose }: Props) {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    // slight delay to allow CSS enter animation
-    requestAnimationFrame(() => setVisible(true));
-
-    // auto-close after 6 seconds
-    const timer = setTimeout(() => {
-      handleClose();
-    }, 6000);
-    return () => clearTimeout(timer);
+    const t1 = requestAnimationFrame(() => setVisible(true));
+    const t2 = setTimeout(handleClose, 5000);
+    return () => {
+      cancelAnimationFrame(t1);
+      clearTimeout(t2);
+    };
   }, []);
 
   function handleClose() {
     setVisible(false);
-    setTimeout(onClose, 300);
+    setTimeout(onClose, 250);
   }
 
   return (
-    <div
-      className="fixed inset-0 flex items-center justify-center z-[99998] px-4"
-      style={{ pointerEvents: "none" }}
-    >
+    <>
+      {/* Backdrop */}
       <div
         onClick={handleClose}
         style={{
-          position: "absolute",
+          position: "fixed",
           inset: 0,
-          background: "rgba(0,0,0,0.55)",
-          pointerEvents: "all",
-          transition: "opacity 0.3s",
+          background: "rgba(0,0,0,0.6)",
+          zIndex: 99997,
+          transition: "opacity 0.25s",
           opacity: visible ? 1 : 0,
         }}
       />
+
+      {/* Card */}
       <div
         style={{
-          position: "relative",
-          pointerEvents: "all",
-          transition: "transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s",
-          transform: visible ? "scale(1) translateY(0)" : "scale(0.7) translateY(40px)",
-          opacity: visible ? 1 : 0,
+          position: "fixed",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 99998,
+          pointerEvents: "none",
+          padding: "1rem",
         }}
-        className="bg-card border-2 border-primary/60 rounded-3xl p-10 max-w-sm w-full text-center"
-        onClick={e => e.stopPropagation()}
       >
-        {/* Glow ring */}
         <div
+          onClick={e => e.stopPropagation()}
           style={{
-            position: "absolute",
-            inset: -4,
-            borderRadius: "1.5rem",
-            background: "conic-gradient(from 0deg, #29b6f6, #00e5ff, #a78bfa, #29b6f6)",
-            zIndex: -1,
-            filter: "blur(8px)",
-            opacity: 0.6,
-          }}
-        />
-
-        <div className="text-6xl mb-4" style={{ filter: "drop-shadow(0 0 16px gold)" }}>🏆</div>
-
-        <p className="text-sm font-bold tracking-widest text-muted-foreground uppercase mb-1">
-          Congratulations!
-        </p>
-
-        <h2
-          className="text-4xl font-black mb-3"
-          style={{
-            background: "linear-gradient(90deg, #29b6f6, #00e5ff, #a78bfa)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
+            pointerEvents: "all",
+            background: "hsl(220 20% 12%)",
+            border: "1px solid hsl(199 89% 48% / 0.4)",
+            borderRadius: "1.25rem",
+            padding: "2.5rem 2rem",
+            maxWidth: "340px",
+            width: "100%",
+            textAlign: "center",
+            transition: "transform 0.3s cubic-bezier(0.34,1.56,0.64,1), opacity 0.25s",
+            transform: visible ? "scale(1) translateY(0)" : "scale(0.85) translateY(24px)",
+            opacity: visible ? 1 : 0,
           }}
         >
-          LEVEL UP!
-        </h2>
+          <div style={{ fontSize: "2.5rem", marginBottom: "0.75rem" }}>🏆</div>
 
-        <div
-          className="text-7xl font-black my-4 text-primary"
-          style={{ textShadow: "0 0 30px #29b6f6, 0 0 60px #29b6f6" }}
-        >
-          {level}
+          <p style={{ color: "hsl(210 40% 70%)", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "0.5rem" }}>
+            Level up!
+          </p>
+
+          <p style={{ color: "hsl(210 40% 95%)", fontSize: "4rem", fontWeight: 900, lineHeight: 1, marginBottom: "0.5rem" }}>
+            {level}
+          </p>
+
+          <p style={{ color: "hsl(210 40% 60%)", fontSize: "0.875rem", marginBottom: "1.75rem" }}>
+            You reached level {level}. Keep it up!
+          </p>
+
+          <button
+            onClick={handleClose}
+            style={{
+              width: "100%",
+              padding: "0.75rem",
+              borderRadius: "0.75rem",
+              background: "hsl(199 89% 48%)",
+              color: "hsl(220 20% 8%)",
+              fontWeight: 800,
+              fontSize: "0.95rem",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Let's go!
+          </button>
         </div>
-
-        <p className="text-muted-foreground text-sm mb-2">
-          You've reached <span className="text-foreground font-bold">Level {level}</span>!
-        </p>
-        <p className="text-muted-foreground text-xs mb-8">
-          Keep completing challenges and quizzes to keep climbing!
-        </p>
-
-        <button
-          onClick={handleClose}
-          className="neon-btn px-8 py-3 rounded-xl font-black text-lg w-full"
-        >
-          Let's Go! 🔥
-        </button>
-
-        <p className="text-xs text-muted-foreground mt-3 opacity-60">Closes automatically in a few seconds</p>
       </div>
-    </div>
+    </>
   );
 }
